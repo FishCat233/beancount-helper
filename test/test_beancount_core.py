@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 
-from src.beancount.core import (
+from beancount_helper.beancount.core import (
     BeanCount,
     resolve_beancount,
     resolve_beancounts,

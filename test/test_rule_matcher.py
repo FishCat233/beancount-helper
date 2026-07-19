@@ -1,6 +1,6 @@
 import pytest
 import datetime
-from src.transformer.rule import Bill, match_rule
+from beancount_helper.transformer.rule import Bill, match_rule
 
 
 # ---------- 辅助构建 Bill ----------

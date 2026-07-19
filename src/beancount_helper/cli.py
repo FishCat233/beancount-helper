@@ -5,10 +5,10 @@ import enum
 import sys
 from pathlib import Path
 
-from src.bill_resolver.ccb import resolve_from_excel as ccb_resolve
-from src.bill_resolver.wechat import resolve_from_excel as wechat_resolve
-from src.beancount.core import BeanCount, dump_beancounts
-from src.transformer.rule import Bill, match_rule
+from beancount_helper.bill_resolver.ccb import resolve_from_excel as ccb_resolve
+from beancount_helper.bill_resolver.wechat import resolve_from_excel as wechat_resolve
+from beancount_helper.beancount.core import BeanCount, dump_beancounts
+from beancount_helper.transformer.rule import Bill, match_rule
 
 
 # ---------------------------------------------------------------------------
