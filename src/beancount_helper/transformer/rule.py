@@ -10,7 +10,9 @@ class Bill(TypedDict, total=False):
     amount: float
     currency_type: str
     opposite: str
+    raw_opposite: str
     note: str
+    raw_note: str
     product: str
 
 

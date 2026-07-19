@@ -52,7 +52,9 @@ def bill_dict(parser: Parser, raw_bill) -> Bill:
             amount=raw_bill.amount,
             currency_type=raw_bill.currency_type,
             opposite=raw_bill.opposite,
+            raw_opposite=raw_bill.raw_opposite,
             note=raw_bill.note,
+            raw_note=raw_bill.raw_note,
         )
     elif parser == Parser.WECHAT:
         return Bill(
