@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/FishCat233/beancount-helper/compare/0.2.0...0.2.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* trigger patch release ([76c50fe](https://github.com/FishCat233/beancount-helper/commit/76c50fe2ce984989c7f2d4c0f87f0072f3f6f98e))
+
 ## [0.2.0](https://github.com/FishCat233/beancount-helper/compare/0.1.0...0.2.0) (2026-07-19)
 
 
