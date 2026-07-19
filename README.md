@@ -117,7 +117,8 @@ p=field:method:value
 
 | Field | Description | CCB | WeChat |
 |-------|-------------|-----|--------|
-| `opposite` | Counterparty name | ✓ | ✓ |
+| `opposite` | Counterparty name (parsed) | ✓ | ✓ |
+| `raw_opposite` | Raw counterparty as in the statement | ✓ | — |
 | `note` | Remarks / memo | ✓ | ✓ |
 | `product` | Product description | — | ✓ |
 
