@@ -61,7 +61,7 @@ beancount-helper INPUT -p PARSER [-r RULES] [-o OUTPUT] [--asset ASSET] [--defau
 |----------|----------|---------|-------------|
 | `INPUT` | yes | — | Path to the bank statement file (`.xls` / `.xlsx`). |
 | `-p`, `--parser` | yes | — | `ccb` or `wechat`. |
-| `-r`, `--rules` | no | — | Path to a rules file. Without it, all records use the default account. |
+| `-r`, `--rules` | no | — | Path to a rules file. Can be specified multiple times to load from several files. Without it, all records use the default account. |
 | `-o`, `--output` | no | `output.beancount` | Output file path. |
 | `--asset` | no | `Assets:CCB` / `Assets:WeChat` | Asset account for the source of funds. |
 | `--default-account` | no | `Equity:Opening-Balances` | Fallback account when no rule matches. |
@@ -74,6 +74,9 @@ beancount-helper ccb.xls -p ccb
 
 # With rules
 beancount-helper wechat.xlsx -p wechat -r rules.txt
+
+# Multiple rules files
+beancount-helper ccb.xls -p ccb -r food.txt -r transport.txt -r income.txt
 
 # Custom accounts
 beancount-helper ccb.xls -p ccb -r rules.txt \

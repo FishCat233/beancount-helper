@@ -135,7 +135,7 @@ def main():
 Examples:
   beancount-helper ccb.xls -p ccb -o output.beancount
   beancount-helper wechat.xlsx -p wechat -r rules.txt -o output.beancount
-  beancount-helper ccb.xls -p ccb -r rules.txt --asset Assets:CCB:Savings --default-account Expenses:Pending
+  beancount-helper ccb.xls -p ccb -r food.txt -r transport.txt --asset Assets:CCB:Savings
         """,
     )
 
@@ -156,8 +156,9 @@ Examples:
         "-r",
         "--rules",
         type=str,
+        action="append",
         default=None,
-        help="Optional path to a rules file (one rule per line; # for comments).",
+        help="Optional path to a rules file. Can be specified multiple times.",
     )
     parser.add_argument(
         "-o",
@@ -190,13 +191,16 @@ Examples:
     # Load rules (optional)
     rules = []
     if args.rules:
-        rules_path = Path(args.rules)
-        if not rules_path.exists():
-            print(f"Error: rules file not found: {args.rules}", file=sys.stderr)
-            sys.exit(1)
-        print(f"Loading rules: {args.rules}")
-        rules = load_rules(str(rules_path))
-        print(f"  Loaded {len(rules)} rule(s)")
+        for rules_path_str in args.rules:
+            rules_path = Path(rules_path_str)
+            if not rules_path.exists():
+                print(f"Error: rules file not found: {rules_path_str}", file=sys.stderr)
+                sys.exit(1)
+            print(f"Loading rules: {rules_path_str}")
+            loaded = load_rules(str(rules_path))
+            rules.extend(loaded)
+            print(f"  Loaded {len(loaded)} rule(s)")
+        print(f"  Total: {len(rules)} rule(s)")
     else:
         print("No rules file provided; all records will use the default account.")
 

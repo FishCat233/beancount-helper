@@ -59,7 +59,7 @@ beancount-helper INPUT -p PARSER [-r RULES] [-o OUTPUT] [--asset ASSET] [--defau
 | ------------------- | ---- | ------------------------------ | -------------------------------------------- |
 | `INPUT`             | 是   | —                              | 账单文件路径（`.xls` / `.xlsx`）。           |
 | `-p`, `--parser`    | 是   | —                              | `ccb` 或 `wechat`。                          |
-| `-r`, `--rules`     | 否   | —                              | 规则文件路径。不提供时所有记录使用默认账户。 |
+| `-r`, `--rules`     | 否   | —                              | 规则文件路径，可多次指定以加载多个文件。不提供时所有记录使用默认账户。 |
 | `-o`, `--output`    | 否   | `output.beancount`             | 输出文件路径。                               |
 | `--asset`           | 否   | `Assets:CCB` / `Assets:WeChat` | 资金所属的资产账户。                         |
 | `--default-account` | 否   | `Equity:Opening-Balances`      | 未命中规则时的兜底账户。                     |
@@ -72,6 +72,9 @@ beancount-helper ccb.xls -p ccb
 
 # 带规则
 beancount-helper wechat.xlsx -p wechat -r rules.txt
+
+# 多个规则文件
+beancount-helper ccb.xls -p ccb -r food.txt -r transport.txt -r income.txt
 
 # 自定义账户
 beancount-helper ccb.xls -p ccb -r rules.txt \
