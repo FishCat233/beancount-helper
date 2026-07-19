@@ -1,6 +1,6 @@
 [project]
 name = "beancount-helper"
-version = "0.2.0"
+version = "0.2.1"
 description = "Convert bank statement Excel files to Beancount format with a rule-based account matching engine."
 license = "MIT"
 readme = "README.md"
