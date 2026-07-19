@@ -24,4 +24,4 @@ beancount-helper = "beancount_helper.cli:main"
 pythonpath = ["src"]
 
 [dependency-groups]
-dev = ["coverage>=7.15.2", "pytest>=9.1.1", "ruff>=0.15.22", "twine>=6.2.0"]
+dev = ["coverage>=7.15.2", "pytest>=9.1.1", "ruff>=0.15.22"]
