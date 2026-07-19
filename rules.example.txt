@@ -1,0 +1,19 @@
+# beancount-helper 规则集
+# 格式: 条件段1;;条件段2;;...=>目标账户
+# 条件类型:
+#   direct=in|out         收支方向
+#   p=字段:eq|in|re:值    属性匹配（精确/包含/正则）
+#   lt|le|gt|ge|eq=数值   金额比较
+#
+# 示例:
+#   p=opposite:eq:一车一人=>Expenses:Trip:共享车:一车一人
+#   p=opposite:in:餐饮;;lt=50.0=>Expenses:Life:餐饮
+#   direct=in=>Income:Salary
+
+p=opposite:eq:一车一人=>Expenses:Trip:共享车:一车一人
+p=opposite:eq:享坐车出行=>Expenses:Trip:共享车:摆渡车
+p=opposite:eq:灵川夜不将就餐饮店（个体工商户）=>Expenses:Life:餐饮
+p=opposite:eq:灵川县这些年小炒店=>Expenses:Life:餐饮
+p=opposite:eq:灵川县张兰食苑餐馆=>Expenses:Life:餐饮
+p=opposite:eq:家乐轩餐厅丨灵川县=>Expenses:Life:餐饮
+p=opposite:in:甘晋宇;;lt=20.0;;direct=in=>Expenses:Life:餐饮
