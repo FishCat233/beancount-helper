@@ -5,11 +5,14 @@ description = "A helper for the Beancount with support of bill excel resolve, au
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "openpyxl>=3.1.5",
     "pandas>=3.0.3",
+    "xlrd>=2.0.2",
 ]
 
 [dependency-groups]
 dev = [
+    "coverage>=7.15.2",
     "pytest>=9.1.1",
     "ruff>=0.15.22",
 ]
