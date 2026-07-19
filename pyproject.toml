@@ -1,0 +1,15 @@
+[project]
+name = "beancount-helper"
+version = "0.1.0"
+description = "A helper for the Beancount with support of bill excel resolve, auto matcher based rule."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pandas>=3.0.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.15.22",
+]

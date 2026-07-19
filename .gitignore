@@ -1,0 +1,9 @@
+# test data
+*.xls
+*.xlsx
+
+# python things
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
