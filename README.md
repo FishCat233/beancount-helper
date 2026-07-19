@@ -192,7 +192,9 @@ beancount-helper/
 ## Development
 
 ```bash
-# Install dev dependencies
+# Clone & editable install
+git clone https://github.com/FishCat233/beancount-helper.git
+cd beancount-helper
 uv sync
 
 # Run tests

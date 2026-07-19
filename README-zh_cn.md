@@ -199,7 +199,9 @@ beancount-helper/
 ## 开发
 
 ```bash
-# 安装开发依赖
+# 克隆并以可编辑模式安装
+git clone https://github.com/FishCat233/beancount-helper.git
+cd beancount-helper
 uv sync
 
 # 运行测试
