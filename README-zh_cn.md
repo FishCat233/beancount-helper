@@ -102,15 +102,43 @@ direct=out      # 支出
 
 #### 属性匹配（`p` / `property`）
 
-匹配账单上的字段。
+匹配账单上的字段。语法：
 
-| 方式 | 语法             | 示例                     |
-| ---- | ---------------- | ------------------------ |
-| 精确 | `p=字段:eq:值`   | `p=opposite:eq:瑞幸咖啡` |
-| 包含 | `p=字段:in:子串` | `p=note:in:午餐`         |
-| 正则 | `p=字段:re:模式` | `p=product:re:^美团外卖` |
+```
+p=字段:方式:值
+```
 
-可用字段：`opposite`、`note`、`product`（仅微信）。
+**可用字段**
+
+| 字段 | 说明 | 建行 | 微信 |
+|-------|------|------|------|
+| `opposite` | 交易对方 | ✓ | ✓ |
+| `note` | 备注 | ✓ | ✓ |
+| `product` | 商品描述 | — | ✓ |
+
+**匹配方式**
+
+| 方式 | 含义 | 示例 |
+|------|------|------|
+| `eq` | 字段完全等于给定值 | `p=opposite:eq:星巴克` |
+| `in` | 字段包含给定子串 | `p=note:in:退款` |
+| `re` | 字段匹配正则表达式 | `p=opposite:re:^ATM\d+$` |
+
+**示例**
+
+```
+# 精确匹配商户名
+p=opposite:eq:中国移动=>Expenses:Utilities:Phone
+
+# 备注包含"餐饮"
+p=note:in:餐饮=>Expenses:Food:Dining
+
+# 商品描述以"京东"开头
+p=product:re:^京东=>Expenses:Shopping:Online
+
+# 配合其他条件使用
+p=opposite:eq:滴滴出行;;direct=out=>Expenses:Transport:Ride
+```
 
 #### 金额比较
 

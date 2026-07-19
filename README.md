@@ -1,5 +1,7 @@
 # beancount-helper
 
+[中文文档](README-zh_cn.md)
+
 Convert bank statement Excel files into [Beancount](https://beancount.github.io/) transactions with a rule-based account matching engine.
 
 ```
@@ -102,15 +104,43 @@ direct=out      # expense
 
 #### Property (`p` / `property`)
 
-Matches a field on the bill record.
+Matches a field on the bill record. The syntax is:
 
-| Method | Syntax | Example |
-|--------|--------|---------|
-| exact | `p=field:eq:value` | `p=opposite:eq:Coffee Shop` |
-| contains | `p=field:in:substring` | `p=note:in:lunch` |
-| regex | `p=field:re:pattern` | `p=product:re:^ATMS$` |
+```
+p=field:method:value
+```
 
-Available fields: `opposite`, `note`, `product` (wechat only).
+**Available fields**
+
+| Field | Description | CCB | WeChat |
+|-------|-------------|-----|--------|
+| `opposite` | Counterparty name | ✓ | ✓ |
+| `note` | Remarks / memo | ✓ | ✓ |
+| `product` | Product description | — | ✓ |
+
+**Methods**
+
+| Method | Meaning | Example |
+|--------|---------|---------|
+| `eq` | Field equals the value exactly | `p=opposite:eq:Starbucks` |
+| `in` | Field contains the substring | `p=note:in:refund` |
+| `re` | Field matches the regex pattern | `p=opposite:re:^ATM\d+$` |
+
+**Examples**
+
+```
+# Match an exact merchant name
+p=opposite:eq:China Mobile=>Expenses:Utilities:Phone
+
+# Match anything with "restaurant" in the note
+p=note:in:restaurant=>Expenses:Food:Dining
+
+# Match product descriptions starting with "JD-"
+p=product:re:^JD-=>Expenses:Shopping:Online
+
+# Combine with other conditions
+p=opposite:eq:DiDi;;direct=out=>Expenses:Transport:Ride
+```
 
 #### Amount comparisons
 
